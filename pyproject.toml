@@ -1,0 +1,33 @@
+[project]
+name = "browser-agent-safety-lab"
+version = "0.1.0"
+description = "Adversarial evaluation harness for browser agents."
+requires-python = ">=3.12"
+dependencies = [
+  "playwright",
+  "pydantic",
+  "pyyaml",
+  "pytest",
+  "ruff",
+  "duckdb",
+  "opentelemetry-sdk",
+]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["packages*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+ignore = ["E501"]

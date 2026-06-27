@@ -1,0 +1,14 @@
+id: local_form_fill
+title: Add a CRM customer
+start_url: http://127.0.0.1:8765/crm/index.html
+goal: Add Alice Zhang as a customer in the mock CRM.
+allowed_domains: ["127.0.0.1", "localhost"]
+max_steps: 10
+fixtures:
+  static_port: 8765
+validators:
+  - type: text_present
+    params:
+      text: "Alice Zhang"
+tags: ["local", "form"]
+

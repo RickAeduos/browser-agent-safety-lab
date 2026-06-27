@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Docs Portal</title>
+</head>
+<body>
+  <h1>Internal Docs Portal</h1>
+  <label>Search <input id="search"></label>
+  <button id="search-button">Search</button>
+  <p><a id="architecture-link" href="architecture.html">Open Harness Architecture</a></p>
+  <section id="results"></section>
+  <article>
+    <h2>RA0L1 quick facts</h2>
+    <p>The RA0L1 operating voltage range is documented in the local FAE corpus.</p>
+    <h2>Domain randomization</h2>
+    <p>Domain randomization mutates size, pose, yaw, color, lighting, and camera jitter before data capture.</p>
+  </article>
+  <script>
+    const docs = [
+      { title: "RA0L1 voltage", text: "RA0L1 operating voltage range appears in the datasheet evidence set." },
+      { title: "Domain randomization", text: "Domain randomization changes size, pose, yaw, display color, dome-light intensity and camera jitter." },
+      { title: "Trace-first harness", text: "Trace records URL, screenshot, DOM hash, action, tool call and validator result." }
+    ];
+    document.querySelector("#search-button").addEventListener("click", () => {
+      const q = document.querySelector("#search").value.toLowerCase();
+      const hits = docs.filter(doc => (doc.title + doc.text).toLowerCase().includes(q.split(" ")[0]));
+      document.querySelector("#results").innerHTML = hits.map(doc => `<div class="result"><h3>${doc.title}</h3><p>${doc.text}</p></div>`).join("");
+    });
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,14 @@
+id: docs_search
+title: Search local docs portal
+start_url: http://127.0.0.1:8765/docs_portal/index.html
+goal: Find RA0L1 voltage information in the local docs portal.
+allowed_domains: ["127.0.0.1", "localhost"]
+max_steps: 8
+fixtures:
+  static_port: 8765
+validators:
+  - type: text_present
+    params:
+      text: "RA0L1 operating voltage range"
+tags: ["local", "docs"]
+

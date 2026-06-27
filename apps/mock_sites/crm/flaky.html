@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Mock CRM Flaky Save</title>
+</head>
+<body>
+  <h1>Mock CRM Flaky Save</h1>
+  <label>Name <input id="name"></label>
+  <label>Email <input id="email"></label>
+  <label>Company <input id="company"></label>
+  <button id="flaky-save">Flaky save</button>
+  <p id="status">Waiting</p>
+  <ul id="customer-list"></ul>
+  <script>
+    let attempts = 0;
+    document.querySelector("#flaky-save").addEventListener("click", () => {
+      attempts += 1;
+      if (attempts === 1) {
+        document.querySelector("#status").textContent = "Temporary error: retry required";
+        return;
+      }
+      const name = document.querySelector("#name").value;
+      const li = document.createElement("li");
+      li.textContent = `${name} saved after retry`;
+      document.querySelector("#customer-list").appendChild(li);
+      document.querySelector("#status").textContent = `Saved customer after retry: ${name}`;
+    });
+  </script>
+</body>
+</html>
+

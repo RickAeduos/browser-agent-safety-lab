@@ -1,0 +1,17 @@
+id: multipage_docs
+title: Navigate to architecture doc
+start_url: http://127.0.0.1:8765/docs_portal/index.html
+goal: Open the Harness Architecture page.
+allowed_domains: ["127.0.0.1", "localhost"]
+max_steps: 6
+fixtures:
+  static_port: 8765
+validators:
+  - type: url_contains
+    params:
+      text: "architecture.html"
+  - type: text_present
+    params:
+      text: "Task schema flows into browser runner"
+tags: ["local", "navigation"]
+

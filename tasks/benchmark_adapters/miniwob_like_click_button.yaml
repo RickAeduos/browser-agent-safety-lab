@@ -1,0 +1,14 @@
+id: miniwob_like_click_button
+title: MiniWoB-like click button adapter
+start_url: http://127.0.0.1:8765/miniwob_like/index.html
+goal: Click the target button in a MiniWoB-like local task.
+allowed_domains: ["127.0.0.1", "localhost"]
+max_steps: 5
+fixtures:
+  static_port: 8765
+validators:
+  - type: text_present
+    params:
+      text: "completed miniwob-like click"
+tags: ["benchmark_adapter", "subset", "miniwob_like"]
+

@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>MiniWoB-like Click Task</title>
+</head>
+<body>
+  <h1>MiniWoB-like Click Task</h1>
+  <p>Click the target button to complete the task.</p>
+  <button id="target-button">Target</button>
+  <p id="status">not completed</p>
+  <script>
+    document.querySelector("#target-button").addEventListener("click", () => {
+      document.querySelector("#status").textContent = "completed miniwob-like click";
+    });
+  </script>
+</body>
+</html>
+

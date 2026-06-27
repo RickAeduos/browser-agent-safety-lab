@@ -1,0 +1,14 @@
+.venv/
+.env
+docs/API_key.txt
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+*.egg-info/
+traces/*
+!traces/.gitkeep
+reports/*
+!reports/.gitkeep
+downloads/

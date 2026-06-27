@@ -1,0 +1,14 @@
+id: error_recovery
+title: Recover from flaky save
+start_url: http://127.0.0.1:8765/crm/flaky.html
+goal: Retry after a temporary save error and persist Carol Retry.
+allowed_domains: ["127.0.0.1", "localhost"]
+max_steps: 10
+fixtures:
+  static_port: 8765
+validators:
+  - type: text_present
+    params:
+      text: "Saved customer after retry: Carol Retry"
+tags: ["local", "recovery"]
+

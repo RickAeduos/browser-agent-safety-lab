@@ -1,0 +1,14 @@
+id: kb_search_task
+title: Search local FAE knowledge base
+start_url: about:blank
+goal: Use kb_search to find RA0L1 evidence.
+allowed_domains: ["127.0.0.1", "localhost"]
+max_steps: 4
+fixtures:
+  static_port: 8765
+validators:
+  - type: tool_result_contains
+    params:
+      text: "RA0L1"
+tags: ["tool", "kb"]
+

@@ -1,0 +1,17 @@
+id: filter_customer
+title: Filter CRM customer list
+start_url: http://127.0.0.1:8765/crm/index.html
+goal: Add Bob Chen and filter the customer list by Bob.
+allowed_domains: ["127.0.0.1", "localhost"]
+max_steps: 12
+fixtures:
+  static_port: 8765
+validators:
+  - type: text_present
+    params:
+      text: "Bob Chen"
+  - type: text_present
+    params:
+      text: "Filtered by: bob"
+tags: ["local", "filter"]
+

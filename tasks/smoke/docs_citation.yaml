@@ -1,0 +1,14 @@
+id: docs_citation
+title: Find domain randomization citation
+start_url: http://127.0.0.1:8765/docs_portal/index.html
+goal: Search for domain randomization evidence.
+allowed_domains: ["127.0.0.1", "localhost"]
+max_steps: 8
+fixtures:
+  static_port: 8765
+validators:
+  - type: text_present
+    params:
+      text: "Domain randomization changes size"
+tags: ["local", "docs"]
+

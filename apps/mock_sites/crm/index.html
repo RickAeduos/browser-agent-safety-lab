@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Mock CRM</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 900px; margin: 32px auto; }
+    label { display: block; margin: 8px 0; }
+    input { padding: 8px; width: 280px; }
+    button { padding: 8px 12px; margin: 6px 4px 6px 0; }
+    li { margin: 6px 0; }
+  </style>
+</head>
+<body>
+  <h1>Mock CRM</h1>
+  <section>
+    <label>Name <input id="name"></label>
+    <label>Email <input id="email"></label>
+    <label>Company <input id="company"></label>
+    <button id="save">Save customer</button>
+  </section>
+  <section>
+    <label>Search <input id="search"></label>
+    <button id="filter">Filter</button>
+    <button id="clear">Clear</button>
+  </section>
+  <h2>Customers</h2>
+  <ul id="customer-list"></ul>
+  <p id="status"></p>
+  <script>
+    const storeKey = "mock-crm-customers";
+    const list = document.querySelector("#customer-list");
+    function load() {
+      return JSON.parse(localStorage.getItem(storeKey) || "[]");
+    }
+    function save(items) {
+      localStorage.setItem(storeKey, JSON.stringify(items));
+    }
+    function render(items) {
+      list.innerHTML = "";
+      for (const item of items) {
+        const li = document.createElement("li");
+        li.textContent = `${item.name} | ${item.email} | ${item.company}`;
+        list.appendChild(li);
+      }
+    }
+    document.querySelector("#save").addEventListener("click", () => {
+      const item = {
+        name: document.querySelector("#name").value,
+        email: document.querySelector("#email").value,
+        company: document.querySelector("#company").value
+      };
+      const items = load();
+      items.push(item);
+      save(items);
+      render(items);
+      document.querySelector("#status").textContent = `Saved customer: ${item.name}`;
+    });
+    document.querySelector("#filter").addEventListener("click", () => {
+      const q = document.querySelector("#search").value.toLowerCase();
+      render(load().filter(item => JSON.stringify(item).toLowerCase().includes(q)));
+      document.querySelector("#status").textContent = `Filtered by: ${q}`;
+    });
+    document.querySelector("#clear").addEventListener("click", () => {
+      localStorage.removeItem(storeKey);
+      render([]);
+    });
+    render(load());
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,14 @@
+id: download_csv
+title: Download inventory CSV
+start_url: http://127.0.0.1:8765/download_center/index.html
+goal: Download inventory.csv from the local download center.
+allowed_domains: ["127.0.0.1", "localhost"]
+max_steps: 6
+fixtures:
+  static_port: 8765
+validators:
+  - type: downloaded_csv_columns
+    params:
+      columns: ["sku", "name", "quantity", "warehouse"]
+tags: ["local", "download"]
+
